@@ -1,0 +1,12 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: scala-fun
+spec:
+  rules:
+  - host: scala.fun
+    http:
+      paths:
+      - backend:
+          serviceName: scala-fun-frontend
+          servicePort: 80

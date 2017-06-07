@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: scala-fun-frontend
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        service: scala-fun-frontend
+    spec:
+      containers:
+      - name: scala-fun-frontend
+        image: spikerlabs/scala-fun-frontend:%%VERSION%%
+        ports:
+        - containerPort: 80
