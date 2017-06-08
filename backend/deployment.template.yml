@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: scala-fun-backend
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        service: scala-fun-backend
+    spec:
+      containers:
+      - name: scala-fun-backend
+        image: spikerlabs/scala-fun-backend:%%VERSION%%
+        ports:
+        - containerPort: 80

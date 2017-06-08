@@ -1,2 +1,3 @@
 # ignore generated files
 frontend/deployment.yml
+backend/deployment.yml

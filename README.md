@@ -18,6 +18,20 @@ sh frontend/deploy.sh
 kubectl set image deployments/scala-fun-frontend scala-fun-frontend=spikerlabs/scala-fun-frontend:VERSION_NUMBER
 ```
 
+## Backend
+
+#### Deploy
+
+```
+sh backend/deploy.sh
+```
+
+#### Update deployment image (no need to have full config checked out):
+
+```
+kubectl set image deployments/scala-fun-backend scala-fun-backend=spikerlabs/scala-fun-backend:VERSION_NUMBER
+```
+
 ## Routing
 
 #### Setup ingress

@@ -10,3 +10,9 @@ spec:
       - backend:
           serviceName: scala-fun-frontend
           servicePort: 80
+  - host: api.scala.fun
+    http:
+      paths:
+      - backend:
+          serviceName: scala-fun-backend
+          servicePort: 8080
