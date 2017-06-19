@@ -29,3 +29,5 @@ spec:
               secretKeyRef:
                 name: scala-fun
                 key: pocket-consumer-key
+          - name: EVENTSTORE_HOST
+            value: scala-fun-eventstore

@@ -1,0 +1,47 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: scala-fun-eventstore
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        service: scala-fun-eventstore
+    spec:
+      containers:
+      - name: scala-fun-eventstore
+        image: eventstore/eventstore:latest
+        ports:
+        - containerPort: 2113
+        - containerPort: 1113
+        env:
+        - name: EVENTSTORE_RUN_PROJECTIONS
+          value: System
+        volumeMounts:
+        - name: eventstore-persistent-storage
+          mountPath: /var/lib/eventstore
+      volumes:
+      - name: eventstore-persistent-storage
+        gcePersistentDisk:
+          pdName: scala-fun-eventstore-disk
+          fsType: ext4
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: scala-fun-eventstore
+  labels:
+    service: scala-fun-eventstore
+spec:
+  selector:
+    service: scala-fun-eventstore
+  ports:
+    - name: admin
+      protocol: TCP
+      port: 2113
+      targetPort: 2113
+    - name: api
+      protocol: TCP
+      port: 1113
+      targetPort: 1113

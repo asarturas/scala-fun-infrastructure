@@ -46,6 +46,20 @@ sh backend/deploy.sh
 kubectl set image deployments/scala-fun-backend scala-fun-backend=spikerlabs/scala-fun-backend:VERSION_NUMBER
 ```
 
+## Supporting services
+
+#### Event Store
+
+Create a persistent disk:
+```
+gcloud compute disks create --size 1GB scala-fun-eventstore-disk
+```
+
+Deploy event store:
+```
+kubectl create -f other/eventstore.yml
+```
+
 ## Routing
 
 #### Setup ingress
