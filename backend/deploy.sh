@@ -14,5 +14,5 @@ cat $dir/deployment.yml
 kubectl replace -f $dir/deployment.yml --record || \
     ( \
         kubectl create -f $dir/deployment.yml --record && \
-        kubectl expose deployment scala-fun-backend --target-port=80 --type=NodePort \
+        kubectl expose deployment scala-fun-backend --target-port=8080 \
     )

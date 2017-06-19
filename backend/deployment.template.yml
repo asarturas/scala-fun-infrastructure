@@ -13,4 +13,19 @@ spec:
       - name: scala-fun-backend
         image: spikerlabs/scala-fun-backend:%%VERSION%%
         ports:
-        - containerPort: 80
+        - containerPort: 8080
+        readinessProbe:
+          httpGet:
+            path: /next
+            port: 8080
+        env:
+          - name: POCKET_ACCESS_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: scala-fun
+                key: pocket-access-token
+          - name: POCKET_CONSUMER_KEY
+            valueFrom:
+              secretKeyRef:
+                name: scala-fun
+                key: pocket-consumer-key

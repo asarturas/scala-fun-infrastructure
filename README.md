@@ -20,6 +20,20 @@ kubectl set image deployments/scala-fun-frontend scala-fun-frontend=spikerlabs/s
 
 ## Backend
 
+#### Required secrets
+
+Backend relies on Pocket credentials being present as secrets
+- pocket-access-token
+- pocket-consumer-key
+
+Example assumes you have them available as environment variables on creation:
+
+```
+kubectl create secret generic scala-fun \
+    --from-literal="pocket-access-token=$POCKET_ACCESS_TOKEN" \
+    --from-literal="pocket-consumer-key=$POCKET_CONSUMER_KEY"
+```
+
 #### Deploy
 
 ```
